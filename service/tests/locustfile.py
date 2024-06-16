@@ -2,7 +2,7 @@ from locust import HttpUser, task
 import pandas as pd
 from tqdm import tqdm
 
-texts = pd.read_csv('../../data/gt_test.csv')['processed_text']
+texts = pd.read_csv('ml/data/gt_test.csv')['processed_text']
 
 
 class HelloWorldUser(HttpUser):
@@ -22,3 +22,4 @@ class HelloWorldUser(HttpUser):
 
         response = self.client.post("/predict", json={'text': texts[2]})
         print(response.status_code, response.json())
+
