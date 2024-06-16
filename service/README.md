@@ -89,3 +89,42 @@ uvicorn main:app
 
 - Swagger UI: `http://127.0.0.1:8000/docs`
 - ReDoc: `http://127.0.0.1:8000/redoc`
+
+## API Documentation
+
+The FastAPI application automatically generates interactive API documentation with Swagger UI and ReDoc.
+
+- **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+
+### Endpoints
+
+- **Get Predictions**
+  - **URL**: `/predict`
+  - **Method**: `POST`
+  - **Request Body**:
+    ```json
+    {
+      "text": "Sample text to process"
+    }
+    ```
+  - **Response**:
+    ```json
+    [
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+    ```
+
+### Prediction Types
+
+The `/predict` endpoint returns a list of prediction types, which can be one of the following values:
+
+- `O`
+- `B_discount`
+- `B_value`
+- `I_value`
+
+For more details, please refer to the interactive API documentation linked above.
