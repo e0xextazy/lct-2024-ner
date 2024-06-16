@@ -14,11 +14,11 @@ class HelloWorldUser(HttpUser):
         print('OK')
 
     def on_start(self):
-        response = self.client.post("/predict", json={'text': 'Text 1'})
+        response = self.client.post("/predict", json={'text': texts[0]})
         print(response.status_code, response.json())
 
-        response = self.client.post("/predict", json={'text': 'Text 2'})
+        response = self.client.post("/predict", json={'text': texts[1]})
         print(response.status_code, response.json())
 
-        response = self.client.post("/predict", json={'text': 'Text 3'})
+        response = self.client.post("/predict", json={'text': texts[2]})
         print(response.status_code, response.json())
