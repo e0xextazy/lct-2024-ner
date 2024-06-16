@@ -105,18 +105,23 @@ After running the command, open your web browser and go to the IP address shown 
 
 For more details, please refer to the interactive API documentation linked above.
 
-Chart of Response Times
+#### Chart of Response Times
 
 <p align="center" width="100%">
     <img width="100%" src="assets/chart.png">
 </p>
 
-Table with data
+#### Table with data
 
 <p align="center" width="100%">
     <img width="100%" src="assets/table.png">
 </p>
 
+#### Docker stats
+
+<p align="center" width="100%">
+    <img width="100%" src="assets/docker_stats.png">
+</p>
 
 ## API Documentation
 
