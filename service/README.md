@@ -60,11 +60,6 @@ cd lct-2024-ner
 python -m venv venv
 ```
 2. Activate the virtual environment:
-- Windows:
-```shell
-venv\Scripts\activate
-```
-- Linux/MacOS:
 ```shell
 source venv/bin/activate
 ```
