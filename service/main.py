@@ -1,35 +1,24 @@
 from enum import Enum
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from llama_cpp import Llama
-import torch
-
+from labse_model import get_labels
 
 app = FastAPI()
-llama_model = Llama(model_path="models/LaBSE-f16.gguf", embedding=True, n_ctx=512)
-
-
-class PredictionType(Enum):
-    # O = 0
-    # B_discount = 1
-    # B_value = 2
-    # I_value = 3
-    O = "O"
-    B_discount = "B-discount"
-    B_value = "B-value"
-    I_value = "I-value"
-
-
-def mock_ml_model(text: str) -> list[PredictionType]:
-    embeddings = llama_model.create_embedding(text)["data"][0]["embedding"]
-    print(f"{embeddings[:3]}... length={len(embeddings)}")
-
-    return [PredictionType.O, PredictionType.B_discount]
-    # return ["O", "B-discount"]  # тоже пройдет
 
 
 class TextRequest(BaseModel):
     text: str = Field(..., title="Input Text", description="The text to be processed by the ML model")
+
+
+class PredictionType(Enum):
+    O = 0
+    B_discount = 1
+    B_value = 2
+    I_value = 3
+    # O = "O"
+    # B_discount = "B-discount"
+    # B_value = "B-value"
+    # I_value = "I-value"
 
 
 @app.post("/predict",
@@ -41,7 +30,8 @@ class TextRequest(BaseModel):
 async def predict(request: TextRequest):
     try:
         text = request.text
-        result = mock_ml_model(text)
-        return result
+        word_count = len(text.split())
+        result = get_labels(text)
+        return result[:word_count]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
