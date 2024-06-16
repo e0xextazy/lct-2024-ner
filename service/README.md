@@ -4,7 +4,7 @@ This project is a FastAPI application that uses PyTorch, llama.cpp. Below are th
 
 ## Prerequisites
 
-- Python 3.11
+- Python 3.12
 - pip
 - Docker (optional, for Docker setup)
 
