@@ -7,7 +7,8 @@ app = FastAPI()
 
 
 class TextRequest(BaseModel):
-    text: str = Field(..., title="Input Text", description="The text to be processed by the ML model")
+    text: str = Field(..., title="Input Text",
+                      description="The text to be processed by the ML model")
 
 
 class PredictionType(Enum):
