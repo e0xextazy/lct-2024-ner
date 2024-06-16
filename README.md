@@ -92,6 +92,19 @@ You can access the automatically generated API documentation at:
 - **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
+### Step 7 (Optional): Load Testing
+
+You can run load testing using Locust. To start load testing, use the following command:
+
+```shell
+locust -f service/tests/locustfile.py --users 1 --spawn-rate 1 --host http://127.0.0.1:8000 --run-time 1m
+```
+This command will start a load test with 1 user and will run for 1 minute against the host http://127.0.0.1:8000.
+
+After running the command, open your web browser and go to the IP address shown in the terminal (usually http://127.0.0.1:8089), then press the "Start" button to begin the test.
+
+For more details, please refer to the interactive API documentation linked above.
+
 ## API Documentation
 
 The FastAPI application automatically generates interactive API documentation with Swagger UI and ReDoc.
@@ -125,20 +138,19 @@ The FastAPI application automatically generates interactive API documentation wi
       3
     ]
     ```
-
+- **Get UI**
+  - **URL**: `/`
+  - **Method**: `GET`
+  - **Description**: This endpoint returns the content of the `index.html` file located in the `static` directory. It is used to display the main page of your web application.
+  - **Response**: HTML content of the `index.html` file.
+  
 ### Prediction Types
 
 The `/predict` endpoint returns a list of prediction types, which can be one of the following values:
 
-- 0 ( "O" )
-- 1 ( "B-discount" )
-- 2 ( "B-value" )
-- 3 ( "I-value" )
+- `0` ( "O" )
+- `1` ( "B-discount" )
+- `2` ( "B-value" )
+- `3` ( "I-value" )
 
 For more details, please refer to the interactive API documentation linked above.
-
-
-```shell
-locust -f service/tests/locustfile.py --users 1 --spawn-rate 1 --host http://127.0.0.1:8000 --run
--time 1m
-```
