@@ -71,6 +71,7 @@ def onnx_inference(
 
     convert_labels = [most_frequent(el) for el in convert_labels]
     convert_labels = convert_labels + [0] * (text_len - len(convert_labels))
+    print()
 
     return convert_labels
 

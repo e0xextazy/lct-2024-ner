@@ -1,7 +1,8 @@
 from enum import Enum
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
-from labse_model import get_labels
+from service.model import get_labels
 
 app = FastAPI()
 
@@ -16,10 +17,6 @@ class PredictionType(Enum):
     B_discount = 1
     B_value = 2
     I_value = 3
-    # O = "O"
-    # B_discount = "B-discount"
-    # B_value = "B-value"
-    # I_value = "I-value"
 
 
 @app.post("/predict",
@@ -36,3 +33,12 @@ async def predict(request: TextRequest):
         return result[:word_count]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/",
+         summary="Get UI",
+         description="")
+async def get_ui():
+    with open("service/index.html", "r") as file:
+        content = file.read()
+    return HTMLResponse(content=content)
