@@ -1,6 +1,6 @@
-# FastAPI Application with PyTorch ???
+# Discount detector application
 
-This project is a FastAPI application that uses PyTorch. Below are the instructions to run the application locally in a virtual environment and via Docker.
+This project is a FastAPI application that uses PyTorch, llama.cpp. Below are the instructions to run the application locally in a virtual environment and via Docker.
 
 ## Prerequisites
 
