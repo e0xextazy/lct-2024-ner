@@ -105,6 +105,19 @@ After running the command, open your web browser and go to the IP address shown 
 
 For more details, please refer to the interactive API documentation linked above.
 
+Chart of Response Times
+
+<p align="center" width="100%">
+    <img width="100%" src="assets/chart.png">
+</p>
+
+Table with data
+
+<p align="center" width="100%">
+    <img width="100%" src="assets/table.png">
+</p>
+
+
 ## API Documentation
 
 The FastAPI application automatically generates interactive API documentation with Swagger UI and ReDoc.
