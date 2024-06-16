@@ -1,6 +1,7 @@
 # Discount detector application
 
-This project is a FastAPI application that uses PyTorch, llama.cpp. Below are the instructions to run the application locally in a virtual environment and via Docker.
+This project is a FastAPI application that uses ONNX runtime and transformers.
+Below are the instructions to run the application locally in a virtual environment and via Docker.
 
 ## Prerequisites
 
@@ -135,3 +136,9 @@ The `/predict` endpoint returns a list of prediction types, which can be one of 
 - 3 ( "I-value" )
 
 For more details, please refer to the interactive API documentation linked above.
+
+
+```shell
+locust -f service/tests/locustfile.py --users 1 --spawn-rate 1 --host http://127.0.0.1:8000 --run
+-time 1m
+```
