@@ -1,10 +1,12 @@
 from enum import Enum
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
+from llama_cpp import Llama
 import torch
 
 
 app = FastAPI()
+llama_model = Llama(model_path="models/LaBSE-f16.gguf", embedding=True, n_ctx=512)
 
 
 class PredictionType(Enum):
@@ -19,6 +21,9 @@ class PredictionType(Enum):
 
 
 def mock_ml_model(text: str) -> list[PredictionType]:
+    embeddings = llama_model.create_embedding(text)["data"][0]["embedding"]
+    print(f"{embeddings[:3]}... length={len(embeddings)}")
+
     return [PredictionType.O, PredictionType.B_discount]
     # return ["O", "B-discount"]  # тоже пройдет
 
